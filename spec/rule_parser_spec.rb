@@ -24,7 +24,7 @@ RSpec.describe RobotsTagParser::RuleParser do
       let(:rule_string) { 'NOFOLLOW' }
 
       it 'downcases the rule' do
-        expect(parse).to eq( 'all' => ['nofollow'] )
+        expect(parse).to eq( 'all' => ['ofollow'] )
       end
     end
 
