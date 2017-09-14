@@ -3,6 +3,7 @@
 A simple gem to parse X-Robots-Tag HTTP headers according to [Google X-Robots-Tag HTTP header specifications](https://developers.google.com/webmasters/control-crawl-index/docs/robots_meta_tag#using-the-x-robots-tag-http-header).
 
 [![CircleCI](https://circleci.com/gh/MothOnMars/robots_tag_parser.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/MothOnMars/robots_tag_parser)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
 
 ## Installation
 
