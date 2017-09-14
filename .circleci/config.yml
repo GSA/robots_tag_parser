@@ -22,10 +22,6 @@ jobs:
     steps:
       - checkout
 
-      # Restore bundle cache
-      - type: cache-restore
-        key: robots_tag_parser-{{ checksum "Gemfile.lock" }}
-
       - run:
           name: install dependencies
           command: |
@@ -37,13 +33,6 @@ jobs:
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
 
-      # Store bundle cache
-      - type: cache-save
-        key: robots_tag_parser-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
-
-      # run tests!
       - run:
           name: run tests
           command: |
