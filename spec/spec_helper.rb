@@ -14,4 +14,5 @@ RSpec.configure do |config|
   end
 end
 
+SimpleCov.refuse_coverage_drop
 SimpleCov.start
