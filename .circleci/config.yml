@@ -23,10 +23,7 @@ jobs:
       - checkout
 
       - restore_cache:
-         keys:
-           - robots_tag_parser-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          #- v1-dependencies-
+         key: robots_tag_parser-{{ checksum "Gemfile.lock" }}
 
       - run:
           name: install dependencies
@@ -53,6 +50,12 @@ jobs:
 
             bundle exec rspec --format progress --format documentation --out /tmp/test-results/rspec.txt
             ./cc-test-reporter after-build --exit-code $?
+
+      - run:
+          name: Upload Test Results to Code Climate
+          command: |
+            ./cc-test-reporter format-coverage -t simplecov $CIRCLE_ARTIFACTS/coverage/.resultset.json
+            ./cc-test-reporter upload-coverage
 
       # collect reports
       - store_test_results:
