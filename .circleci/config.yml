@@ -1,0 +1,45 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+jobs:
+  build:
+    environment:
+      CC_TEST_REPORTER_ID: d67e502df338d2a59610e9500f5d9bd87abb2d538ae34bf25d8a68762d6c11b2
+      COVERAGE: true
+    docker:
+      - image: circleci/ruby:2.4.1-node-browsers
+
+    working_directory: ~/robots_tag_parser
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install Dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - run:
+          name: Install Code Climate Test Reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
+      - run:
+          name: Run Tests
+          command: |
+            mkdir /tmp/test-results
+            ./cc-test-reporter before-build
+
+            bundle exec rspec --format progress --format documentation --out /tmp/test-results/rspec.txt \
+              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+             ./cc-test-reporter after-build --exit-code $?
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
