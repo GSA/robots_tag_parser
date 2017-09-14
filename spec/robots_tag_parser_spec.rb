@@ -25,7 +25,7 @@ RSpec.describe RobotsTagParser do
       let(:headers) { { 'X-Robots-Tag' => 'nofollow' } }
 
       it 'is not case-sensitive' do
-        expect(get_rules).to eq 'foo'#['nofollow']
+        expect(get_rules).to eq ['nofollow']
       end
     end
 
