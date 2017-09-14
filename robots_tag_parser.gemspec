@@ -10,18 +10,9 @@ Gem::Specification.new do |spec|
   spec.email         = ["mothonmars@gmail.com"]
 
   spec.summary       = %q{X-Robots-Tag HTTP header parser}
-  spec.description   = %q{A simple gem to parse X-Robots-Tag HTTP headers according to Google X-Robots-Tag HTTP header specifications.} #TODO
+  spec.description   = %q{A simple gem to parse X-Robots-Tag HTTP headers according to Google X-Robots-Tag HTTP header specifications.}
   spec.homepage      = "https://github.com/MothOnMars/robots_tag_parser"
   spec.license       = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "Set to 'http://mygemserver.com'" #TODO
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})

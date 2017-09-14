@@ -9,13 +9,7 @@ jobs:
       CC_TEST_REPORTER_ID: d67e502df338d2a59610e9500f5d9bd87abb2d538ae34bf25d8a68762d6c11b2
       COVERAGE: true
     docker:
-      # specify the version you desire here
-       - image: circleci/ruby:2.4.1-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+      - image: circleci/ruby:2.4.1-node-browsers
 
     working_directory: ~/robots_tag_parser
 
@@ -23,7 +17,7 @@ jobs:
       - checkout
 
       - run:
-          name: install dependencies
+          name: Install Dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
@@ -34,7 +28,7 @@ jobs:
             chmod +x ./cc-test-reporter
 
       - run:
-          name: run tests
+          name: Run Tests
           command: |
             mkdir /tmp/test-results
             ./cc-test-reporter before-build
@@ -42,12 +36,6 @@ jobs:
             bundle exec rspec --format progress --format documentation --out /tmp/test-results/rspec.txt \
               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
              ./cc-test-reporter after-build --exit-code $?
-
-             #- run:
-        #name: Upload Test Results to Code Climate
-        # command: |
-            #./cc-test-reporter format-coverage -t simplecov $CIRCLE_ARTIFACTS/coverage/.resultset.json
-            #./cc-test-reporter upload-coverage
 
       # collect reports
       - store_test_results:
