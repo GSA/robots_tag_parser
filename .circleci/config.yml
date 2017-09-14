@@ -22,10 +22,9 @@ jobs:
     steps:
       - checkout
 
-       Download and cache dependencies
       - restore_cache:
          keys:
-           - v1-dependencies-{{ checksum "Gemfile.lock" }}
+           - robots_tag_parser-{{ checksum "Gemfile.lock" }}
           # fallback to using the latest cache if no exact match is found
           #- v1-dependencies-
 
@@ -33,13 +32,17 @@ jobs:
           name: install dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - run:
+          name: Install Code Climate Test Reporter
+          command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
 
       - save_cache:
           paths:
             - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          key: robots_tag_parser-{{ checksum "Gemfile.lock" }}
 
       # run tests!
       - run:
