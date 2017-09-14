@@ -5,7 +5,7 @@ RSpec.describe RobotsTagParser do
     expect(RobotsTagParser::VERSION).not_to be nil
   end
 
-  pending '.get_rules' do
+  describe '.get_rules' do
     let(:headers) { { "x-robots-tag" => "noindex" } }
     subject(:get_rules) { RobotsTagParser.get_rules(headers: headers) }
 
