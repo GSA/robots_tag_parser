@@ -1,8 +1,6 @@
 # RobotsTagParser
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/robots_tag_parser`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A simple gem to parse X-Robots-Tag HTTP headers according to [Google X-Robots-Tag HTTP header specifications](https://developers.google.com/webmasters/control-crawl-index/docs/robots_meta_tag#using-the-x-robots-tag-http-header).
 
 ## Installation
 
@@ -22,7 +20,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Basic example
+Get rules applied to all user agents:
+
+```ruby
+headers = { 'X-Robots-Tag' => ['noindex,noarchive', 'googlebot: nofollow' }
+
+RobotsTagParser.get_rules(headers: headers)
+=> ['noindex', 'noarchive']
+```
+
+Get rules applying to specific user agents (which include generic
+rules):
+```ruby
+headers = { 'X-Robots-Tag' => ['noindex,noarchive', 'googlebot: nofollow' }
+
+RobotsTagParser.get_rules(headers: headers, user_agent: 'googlebot')
+=> ['noindex', 'noarchive', 'nofollow']
+
+
 
 ## Development
 
