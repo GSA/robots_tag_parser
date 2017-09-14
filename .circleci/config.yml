@@ -7,6 +7,7 @@ jobs:
   build:
     environment:
       CC_TEST_REPORTER_ID: d67e502df338d2a59610e9500f5d9bd87abb2d538ae34bf25d8a68762d6c11b2
+      COVERAGE: true
     docker:
       # specify the version you desire here
        - image: circleci/ruby:2.4.1-node-browsers
@@ -21,10 +22,10 @@ jobs:
     steps:
       - checkout
 
-      # Download and cache dependencies
-      #- restore_cache:
-      #   keys:
-          # - v1-dependencies-{{ checksum "Gemfile.lock" }}
+       Download and cache dependencies
+      - restore_cache:
+         keys:
+           - v1-dependencies-{{ checksum "Gemfile.lock" }}
           # fallback to using the latest cache if no exact match is found
           #- v1-dependencies-
 
