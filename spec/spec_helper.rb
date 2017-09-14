@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "robots_tag_parser"
+require 'simplecov'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -12,3 +13,6 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+SimpleCov.minimum_coverage 100
+SimpleCov.start
