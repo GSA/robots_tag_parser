@@ -4,6 +4,7 @@ A simple gem to parse X-Robots-Tag HTTP headers according to [Google X-Robots-Ta
 
 [![CircleCI](https://circleci.com/gh/MothOnMars/robots_tag_parser.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/MothOnMars/robots_tag_parser)
 [![Code Climate](https://codeclimate.com/github/MothOnMars/robots_tag_parser.svg)](https://codeclimate.com/github/MothOnMars/robots_tag_parser)
+[![Test Coverage](https://codeclimate.com/github/MothOnMars/robots_tag_parser/badges/coverage.svg)](https://codeclimate.com/github/MothOnMars/robots_tag_parser/coverage)
 
 ## Installation
 
