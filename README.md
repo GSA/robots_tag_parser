@@ -32,12 +32,13 @@ RobotsTagParser.get_rules(headers: headers)
 
 Get rules applying to specific user agents (which include generic
 rules):
+
 ```ruby
 headers = { 'X-Robots-Tag' => ['noindex,noarchive', 'googlebot: nofollow' }
 
 RobotsTagParser.get_rules(headers: headers, user_agent: 'googlebot')
 => ['noindex', 'noarchive', 'nofollow']
-
+```
 
 
 ## Development
@@ -48,8 +49,22 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/robots_tag_parser.
+Bug reports and pull requests are welcome on [GitHub](https://github.com/MothOnMars/robots_tag_parser).
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+## Directives:
+- [x] `all` - There are no restrictions for indexing or serving.
+- [x] `none` - Equivalent to `noindex` and `nofollow`.
+- [x] `noindex` - Do not show this page in search results and do not show a "Cached" link in search results.
+- [x] `nofollow` - Do not follow the links on this page.
+- [x] `noarchive` - Do not show a "Cached" link in search results.
+- [x] `nosnippet` - Do not show a snippet in the search results for this page.
+- [x] `noodp` - Do not use metadata from the [Open Directory project](http://dmoz.org/) for titles or snippets shown for this page.
+- [x] `notranslate` - Do not offer translation of this page in search results.
+- [x] `noimageindex` - Do not index images on this page.
+- [ ] `unavailable_after` - Do not show this page in search results after the specified date/time. #Not yet supported
+
+Source: [https://developers.google.com/webmasters/control-crawl-index/docs/robots_meta_tag](https://developers.google.com/webmasters/control-crawl-index/docs/robots_meta_tag#valid-indexing--serving-directives)
