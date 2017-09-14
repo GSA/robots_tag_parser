@@ -65,7 +65,6 @@ The gem is available as open source under the terms of the [MIT License](http://
 - [x] `nofollow` - Do not follow the links on this page.
 - [x] `noarchive` - Do not show a "Cached" link in search results.
 - [x] `nosnippet` - Do not show a snippet in the search results for this page.
-- [x] `noodp` - Do not use metadata from the [Open Directory project](http://dmoz.org/) for titles or snippets shown for this page.
 - [x] `notranslate` - Do not offer translation of this page in search results.
 - [x] `noimageindex` - Do not index images on this page.
 - [ ] `unavailable_after` - Do not show this page in search results after the specified date/time. #Not yet supported
