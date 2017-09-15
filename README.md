@@ -11,24 +11,20 @@ A simple gem to parse X-Robots-Tag HTTP headers according to [Google X-Robots-Ta
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'robots_tag_parser'
+gem 'robots_tag_parser', git: 'https://github.com/MothOnMars/robots_tag_parser'
 ```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install robots_tag_parser
-
 ## Usage
 
-### Basic example
-Get rules applied to all user agents:
+### Basic examples
+Get rules applying to all user agents:
 
 ```ruby
-headers = { 'X-Robots-Tag' => ['noindex,noarchive', 'googlebot: nofollow' }
+headers = { 'X-Robots-Tag' => ['noindex,noarchive', 'googlebot: nofollow'] }
 
 RobotsTagParser.get_rules(headers: headers)
 => ['noindex', 'noarchive']
@@ -38,7 +34,7 @@ Get rules applying to specific user agents (which include generic
 rules):
 
 ```ruby
-headers = { 'X-Robots-Tag' => ['noindex,noarchive', 'googlebot: nofollow' }
+headers = { 'X-Robots-Tag' => ['noindex,noarchive', 'googlebot: nofollow'] }
 
 RobotsTagParser.get_rules(headers: headers, user_agent: 'googlebot')
 => ['noindex', 'noarchive', 'nofollow']
@@ -68,6 +64,6 @@ The gem is available as open source under the terms of the [MIT License](http://
 - [x] `nosnippet` - Do not show a snippet in the search results for this page.
 - [x] `notranslate` - Do not offer translation of this page in search results.
 - [x] `noimageindex` - Do not index images on this page.
-- [ ] `unavailable_after` - Do not show this page in search results after the specified date/time. #Not yet supported
+- [x] `unavailable_after` - Do not show this page in search results after the specified date/time.
 
 Source: [https://developers.google.com/webmasters/control-crawl-index/docs/robots_meta_tag](https://developers.google.com/webmasters/control-crawl-index/docs/robots_meta_tag#valid-indexing--serving-directives)
