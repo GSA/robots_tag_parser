@@ -21,10 +21,10 @@ RSpec.describe RobotsTagParser::RuleParser do
     end
 
     context 'when the rule string is not downcased' do
-      let(:rule_string) { 'NOFOLLOW' }
+      let(:rule_string) { 'MYBOT: NOFOLLOW' }
 
       it 'downcases the rule' do
-        expect(parse).to eq( 'all' => ['nofollow'] )
+        expect(parse).to eq( 'mybot' => ['nofollow'] )
       end
     end
 
