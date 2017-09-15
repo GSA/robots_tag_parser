@@ -2,6 +2,7 @@ require "robots_tag_parser/version"
 
 module RobotsTagParser
   def self.get_rules(headers:, user_agent: nil)
+    raise ArgumentError, 'Headers must be a hash' unless headers.is_a? Hash
     rules = downcase_keys(headers)['x-robots-tag']
     return [] unless rules
     hash_of(rules).values_at('all', user_agent).compact.flatten.uniq

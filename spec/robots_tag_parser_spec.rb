@@ -9,6 +9,14 @@ RSpec.describe RobotsTagParser do
     let(:headers) { { "x-robots-tag" => "noindex" } }
     subject(:get_rules) { RobotsTagParser.get_rules(headers: headers) }
 
+    context 'when invalid arguments are passed' do
+      let(:headers) { 'not a hash' }
+
+      it 'raises an ArgumentError' do
+        expect{ get_rules }.to raise_error(ArgumentError, 'Headers must be a hash')
+      end
+    end
+
     it 'returns the rules as an array' do
       expect(get_rules).to eq ['noindex']
     end
