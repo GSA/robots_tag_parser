@@ -53,7 +53,7 @@ Bug reports and pull requests are welcome on [GitHub](https://github.com/MothOnM
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [CC0 License](LICENSE.md).
 
 ## Directives:
 - [x] `all` - There are no restrictions for indexing or serving.
