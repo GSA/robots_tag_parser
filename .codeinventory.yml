@@ -1,0 +1,13 @@
+name: RobotsTagParser
+description: 'A gem to parse X-Robots-Tag HTTP headers.'
+license: 'https://creativecommons.org/publicdomain/zero/1.0'
+openSourceProject: 1
+governmentWideReuseProject: 1
+tags:
+    - GSA
+    - Search.gov
+    - search
+    - indexing
+    - robots
+contact:
+    email: search@support.digitalgov.gov
