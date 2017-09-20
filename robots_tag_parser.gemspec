@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{X-Robots-Tag HTTP header parser}
   spec.description   = %q{A simple gem to parse X-Robots-Tag HTTP headers according to Google X-Robots-Tag HTTP header specifications.}
-  spec.homepage      = "https://github.com/MothOnMars/robots_tag_parser"
+  spec.homepage      = "https://github.com/GSA/robots_tag_parser"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|

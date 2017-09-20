@@ -2,16 +2,16 @@
 
 A simple gem to parse X-Robots-Tag HTTP headers according to [Google X-Robots-Tag HTTP header specifications](https://developers.google.com/webmasters/control-crawl-index/docs/robots_meta_tag#using-the-x-robots-tag-http-header).
 
-[![CircleCI](https://circleci.com/gh/MothOnMars/robots_tag_parser.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/MothOnMars/robots_tag_parser)
-[![Code Climate](https://codeclimate.com/github/MothOnMars/robots_tag_parser.svg)](https://codeclimate.com/github/MothOnMars/robots_tag_parser)
-[![Test Coverage](https://codeclimate.com/github/MothOnMars/robots_tag_parser/badges/coverage.svg)](https://codeclimate.com/github/MothOnMars/robots_tag_parser/coverage)
+[![CircleCI](https://circleci.com/gh/GSA/robots_tag_parser.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/GSA/robots_tag_parser)
+[![Code Climate](https://codeclimate.com/github/GSA/robots_tag_parser.svg)](https://codeclimate.com/github/GSA/robots_tag_parser)
+[![Test Coverage](https://codeclimate.com/github/GSA/robots_tag_parser/badges/coverage.svg)](https://codeclimate.com/github/GSA/robots_tag_parser/coverage)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'robots_tag_parser', git: 'https://github.com/MothOnMars/robots_tag_parser'
+gem 'robots_tag_parser', git: 'https://github.com/GSA/robots_tag_parser'
 ```
 
 And then execute:
@@ -49,7 +49,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on [GitHub](https://github.com/MothOnMars/robots_tag_parser).
+Bug reports and pull requests are welcome on [GitHub](https://github.com/GSA/robots_tag_parser).
 
 ## License
 
