@@ -1,4 +1,3 @@
-# coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "robots_tag_parser/version"
@@ -26,4 +25,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "pry", "~> 0.14.1"
   spec.add_development_dependency "simplecov", "~> 0.21.2"
+  spec.add_development_dependency "debug"
+  spec.add_development_dependency "searchgov_style"
 end
