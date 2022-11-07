@@ -2,40 +2,49 @@
 #
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
-version: 2
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@2.0.0
+
 jobs:
-  build:
+  build_and_test:
+    parameters:
+      ruby_version:
+        type: string
     environment:
       CC_TEST_REPORTER_ID: 04c5e730214438ccb56fa2e218bc65bcc1ae4ea86efb5c1f58f7eb9cc065c82a
       COVERAGE: true
     docker:
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: cimg/ruby:<< parameters.ruby_version >>
 
     working_directory: ~/robots_tag_parser
 
     steps:
       - checkout
 
-      - run:
-          name: Install Dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      # Install gems with Bundler
+      - ruby/install-deps:
+          # Need to clear the gem cache? Set or bump the CACHE_VERSION in your
+          # CircleCi project: Project Settings > Environment Variables
+          key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
       - run:
-          name: Install Code Climate Test Reporter
+          name: Prepare Code Climate Test Reporter
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
-
-      - run:
-          name: Run Tests
-          command: |
-            mkdir /tmp/test-results
             ./cc-test-reporter before-build
 
-            bundle exec rspec --format progress --format documentation --out /tmp/test-results/rspec.txt \
-              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-             ./cc-test-reporter after-build --exit-code $?
+      - ruby/rspec-test:
+          # Need to temporarily test with a particular seed? Use:
+          # order: rand:123
+          order: rand
+
+      - run:
+          name: Report Test Results
+          command: |
+            ./cc-test-reporter after-build
 
       # collect reports
       - store_test_results:
@@ -43,3 +52,15 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+workflows:
+  build_and_test:
+    jobs:
+      - build_and_test:
+          name: "Ruby << matrix.ruby_version >>"
+          matrix:
+            parameters:
+              ruby_version:
+                - 2.7.6
+                - 3.0.4
+                - 3.1.2
